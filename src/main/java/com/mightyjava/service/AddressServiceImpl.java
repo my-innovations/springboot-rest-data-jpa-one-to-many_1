@@ -7,23 +7,23 @@ import org.springframework.stereotype.Service;
 
 import com.mightyjava.entity.Address;
 import com.mightyjava.repository.AddressRepository;
-import com.mightyjava.repository.FriendRepository;
+import com.mightyjava.repository.ContactRepository;
 
 @Service
 public class AddressServiceImpl implements AddressService {
 
+	private ContactRepository friendRepository;
 	private AddressRepository addressRepository;
-	private FriendRepository friendRepository;
 
-	@Autowired
-	public AddressServiceImpl(AddressRepository addressRepository, FriendRepository friendRepository) {
+	@Autowired // optional
+	public AddressServiceImpl(AddressRepository addressRepository, ContactRepository friendRepository) {
 		this.addressRepository = addressRepository;
 		this.friendRepository = friendRepository;
 	}
 
 	@Override
 	public Address saveAddress(Address address) {
-		address.setFriend(friendRepository.findById(address.getFriendId()).get());
+		address.setFriend(friendRepository.findById(address.getContactId()).get());
 		return addressRepository.save(address);
 	}
 
@@ -39,7 +39,7 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public Address updateAddress(Address address) {
-		address.setFriend(friendRepository.findById(address.getFriendId()).get());
+		address.setFriend(friendRepository.findById(address.getContactId()).get());
 		return addressRepository.save(address);
 	}
 

@@ -14,25 +14,25 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "addr_seq")
 	@SequenceGenerator(initialValue = 1, name = "addr_seq", sequenceName = "addr_sequence")
-	private Long id;
+	private Long aId;
 	private String city;
 	private String state;
 	private String country;
 	private String category;
 
 	// for updating the address for the below friendId.
-	private transient Long friendId;
+	private transient Long contactId;
 
 	@ManyToOne
-	@JoinColumn(name = "friend_id") // FK column in Address table
-	private Friend friend;
+	@JoinColumn(name = "contact_id") // FK column in Address table
+	private Contact contact;
 
 	public Long getId() {
-		return id;
+		return aId;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.aId = id;
 	}
 
 	public String getCity() {
@@ -59,20 +59,20 @@ public class Address {
 		this.country = country;
 	}
 
-	public Friend getFriend() {
-		return friend;
+	public Contact getFriend() {
+		return contact;
 	}
 
-	public void setFriend(Friend friend) {
-		this.friend = friend;
+	public void setFriend(Contact friend) {
+		this.contact = friend;
 	}
 
-	public Long getFriendId() {
-		return friendId;
+	public Long getContactId() {
+		return contactId;
 	}
 
-	public void setFriendId(Long friendId) {
-		this.friendId = friendId;
+	public void setContactId(Long contactId) {
+		this.contactId = contactId;
 	}
 
 	public String getCategory() {

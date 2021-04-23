@@ -14,24 +14,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Friend {
+public class Contact {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "f_seq")
-	@SequenceGenerator(initialValue = 1, name = "f_seq", sequenceName = "frnd_sequence")
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "c_seq")
+	@SequenceGenerator(initialValue = 1, name = "c_seq", sequenceName = "contact_sequence")
+	private Long cId;
 	private String firstName;
 	private String lastName;
 
-	@OneToMany(targetEntity = Address.class, mappedBy = "friend", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Address.class, mappedBy = "contact", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Address> addresses;
 
 	public Long getId() {
-		return id;
+		return cId;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.cId = id;
 	}
 
 	public String getFirstName() {
@@ -52,7 +52,7 @@ public class Friend {
 
 	@Override
 	public String toString() {
-		return "Friend [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", addresses=" + addresses
+		return "Friend [id=" + cId + ", firstName=" + firstName + ", lastName=" + lastName + ", addresses=" + addresses
 				+ "]";
 	}
 
