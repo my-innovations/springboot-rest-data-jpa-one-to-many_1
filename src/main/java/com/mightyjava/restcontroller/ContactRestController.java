@@ -29,7 +29,7 @@ public class ContactRestController {
 
 	@RequestMapping("/{id}")
 	public Contact findContactById(@PathVariable Long id) {
-		return contactService.findContact(id);
+		return contactService.findContactById(id);
 	}
 
 	@RequestMapping("/all")
@@ -39,6 +39,6 @@ public class ContactRestController {
 
 	@RequestMapping("/delete/{id}")
 	public String deleteContact(@PathVariable Long id) {
-		return contactService.deleteContact(id);
+		return contactService.deleteContactById(id);
 	}
 }

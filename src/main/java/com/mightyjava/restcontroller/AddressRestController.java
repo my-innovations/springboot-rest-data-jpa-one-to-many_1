@@ -39,7 +39,7 @@ public class AddressRestController {
 	
 	@RequestMapping("/delete/{id}")
 	public String deleteAddress(@PathVariable Long id) {
-		return addressService.deleteAddress(id);
+		return addressService.deleteAddressById(id);
 	}
 	
 }

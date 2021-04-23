@@ -14,6 +14,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 	
-	@Bean public ObjectMapper objectMapper() {
+	@Bean 
+	public ObjectMapper objectMapper() {
    	 return new ObjectMapper().disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);}
 }

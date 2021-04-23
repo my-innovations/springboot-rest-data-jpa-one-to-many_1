@@ -12,18 +12,18 @@ import com.mightyjava.repository.ContactRepository;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-	private ContactRepository friendRepository;
+	private ContactRepository contactRepository;
 	private AddressRepository addressRepository;
 
 	@Autowired // optional
 	public AddressServiceImpl(AddressRepository addressRepository, ContactRepository friendRepository) {
 		this.addressRepository = addressRepository;
-		this.friendRepository = friendRepository;
+		this.contactRepository = friendRepository;
 	}
 
 	@Override
 	public Address saveAddress(Address address) {
-		address.setFriend(friendRepository.findById(address.getContactId()).get());
+		address.setContact(contactRepository.findById(address.getContactId()).get());
 		return addressRepository.save(address);
 	}
 
@@ -39,12 +39,12 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public Address updateAddress(Address address) {
-		address.setFriend(friendRepository.findById(address.getContactId()).get());
+		address.setContact(contactRepository.findById(address.getContactId()).get());
 		return addressRepository.save(address);
 	}
 
 	@Override
-	public String deleteAddress(Long id) {
+	public String deleteAddressById(Long id) {
 		addressRepository.deleteById(id);
 		return "{'message':'address deleted successfully'}";
 	}

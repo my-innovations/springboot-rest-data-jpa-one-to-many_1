@@ -12,6 +12,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table
 public class Contact {
@@ -19,41 +30,11 @@ public class Contact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "c_seq")
 	@SequenceGenerator(initialValue = 1, name = "c_seq", sequenceName = "contact_sequence")
-	private Long cId;
+	private Long contactId;
 	private String firstName;
 	private String lastName;
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Address.class, mappedBy = "contact", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Address> addresses;
-
-	public Long getId() {
-		return cId;
-	}
-
-	public void setId(Long id) {
-		this.cId = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	@Override
-	public String toString() {
-		return "Friend [id=" + cId + ", firstName=" + firstName + ", lastName=" + lastName + ", addresses=" + addresses
-				+ "]";
-	}
-
 }

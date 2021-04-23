@@ -24,7 +24,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public Contact findContact(Long id) {
+	public Contact findContactById(Long id) {
 		return contactRepository.findById(id).get();
 	}
 
@@ -37,7 +37,7 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public String deleteContact(Long id) {
+	public String deleteContactById(Long id) {
 		contactRepository.deleteById(id);
 		return "{'message':'Contact deleted successfully.'}";
 	}

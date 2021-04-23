@@ -10,5 +10,5 @@ public interface AddressService {
 	Address findAddressById(Long id);
 	List<Address> addressList();
 	public Address updateAddress(Address address);
-	String deleteAddress(Long id);
+	String deleteAddressById(Long id);
 }

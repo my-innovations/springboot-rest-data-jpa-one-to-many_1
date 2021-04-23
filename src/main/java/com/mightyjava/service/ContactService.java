@@ -7,7 +7,7 @@ import com.mightyjava.entity.Contact;
 public interface ContactService {
 	
 	Contact saveContact(Contact friend);
-	Contact findContact(Long id);
+	Contact findContactById(Long id);
 	List<Contact> findAllContacts();
-	String deleteContact(Long id);
+	String deleteContactById(Long id);
 }
